@@ -3447,6 +3447,9 @@ static CURLcode ossl_connect_step1(struct Curl_cfilter *cf,
 
   switch(ssl_version) {
   case CURL_SSLVERSION_DEFAULT:
+    req_method = GMTLS_client_method();
+    use_sni(TRUE);
+    break;
   case CURL_SSLVERSION_TLSv1:
   case CURL_SSLVERSION_TLSv1_0:
   case CURL_SSLVERSION_TLSv1_1:
