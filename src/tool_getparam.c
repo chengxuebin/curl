@@ -219,6 +219,7 @@ static const struct LongShort aliases[]= {
   {"13",  "tlsv1.3",                 ARG_NONE},
   {"1A", "tls13-ciphers",            ARG_STRING},
   {"1B", "proxy-tls13-ciphers",      ARG_STRING},
+  {"1C", "gmtls",                    ARG_NONE},
   {"2",  "sslv2",                    ARG_NONE},
   {"3",  "sslv3",                    ARG_NONE},
   {"4",  "ipv4",                     ARG_NONE},
@@ -1483,6 +1484,9 @@ ParameterError getparameter(const char *flag, /* f or -long-flag */
         break;
       case 'B': /* --proxy-tls13-ciphers */
         GetStr(&config->proxy_cipher13_list, nextarg);
+        break;
+      case 'C': /* --gmtls */
+        config->ssl_version = CURL_SSLVERSION_DEFAULT;
         break;
       }
       break;
